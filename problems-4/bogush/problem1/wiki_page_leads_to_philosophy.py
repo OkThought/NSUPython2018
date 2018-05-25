@@ -95,6 +95,7 @@ EXCLUDED_CLASSES = {
 def is_a_bad_tag(tag: Tag) -> bool:
     return (
         tag.name in EXCLUDED_PARENTS or
+        tag.has_attr('align') and 'right' in tag['align'] or
         tag.has_attr('class') and EXCLUDED_CLASSES.intersection(tag['class'])
     )
 
